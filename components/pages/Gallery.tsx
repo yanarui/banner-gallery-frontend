@@ -77,7 +77,7 @@ export default function Gallery() {
                     }>
                     <AspectRatioImageCard
                       src={banner.image_url}
-                      alt={banner.company_name}
+                      alt={banner.company_name || `Banner ${banner.id}`}
                     />
                   </a>
                 </div>
