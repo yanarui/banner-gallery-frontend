@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Header from "../../components/base/Header/Header";
 import Footer from "../../components/base/Footer/Footer";
+import { AspectRatioImageCard } from "../../components/ui/AspectRatioImageCard";
 import ImageCard from "../../components/ui/ImageCard";
 
 type Banner = {
@@ -95,12 +96,9 @@ export default function MyBanners() {
                 <div className="mt-2 w-95" key={banner.id}>
                   <div className="bg-gray-200 overflow-hidden p-10">
                     <div className="flex justify-center items-center w-[300px] h-[300px] mx-auto my-auto">
-                      <ImageCard
+                      <AspectRatioImageCard
                         src={banner.image_url}
                         alt={banner.company_name}
-                        width="300px"
-                        maxWidth="300px"
-                        maxHeight="300px"
                       />
                       <div className="mt-2 mb-10"></div>
                     </div>

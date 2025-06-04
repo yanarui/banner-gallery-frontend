@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import ImageCard from "../ui/ImageCard";
+import { AspectRatioImageCard } from "../../components/ui/AspectRatioImageCard";
 
 interface Tag {
   name: string;
@@ -11,6 +11,7 @@ interface Banner {
   image_url: string;
   detail_url?: string;
   tags: Tag[];
+  company_name?: string;
 }
 
 export default function Gallery() {
@@ -74,12 +75,9 @@ export default function Gallery() {
                     href={
                       banner.detail_url || `/bannerdetailpage?id=${banner.id}`
                     }>
-                    <ImageCard
+                    <AspectRatioImageCard
                       src={banner.image_url}
-                      alt={`Banner ${i + 1}`}
-                      width="300px"
-                      maxWidth="300px"
-                      maxHeight="300px"
+                      alt={banner.company_name}
                     />
                   </a>
                 </div>
