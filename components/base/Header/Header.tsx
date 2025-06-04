@@ -114,11 +114,11 @@ const Header: React.FC = () => {
                   </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     href="/mybanners"
                     className="text-gray-800 hover:text-gray-600">
                     MY_BANNERS
-                  </a>
+                  </Link>
                 </li>
               </>
             )}

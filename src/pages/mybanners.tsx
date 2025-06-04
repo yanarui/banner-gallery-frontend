@@ -98,6 +98,7 @@ export default function MyBanners() {
                       <ImageCard
                         src={banner.image_url}
                         alt={banner.company_name}
+                        width="300px"
                         maxWidth="300px"
                         maxHeight="300px"
                       />
