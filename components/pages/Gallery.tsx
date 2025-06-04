@@ -77,6 +77,7 @@ export default function Gallery() {
                     <ImageCard
                       src={banner.image_url}
                       alt={`Banner ${i + 1}`}
+                      width="300px"
                       maxWidth="300px"
                       maxHeight="300px"
                     />
