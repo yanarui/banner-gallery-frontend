@@ -3,8 +3,16 @@ import TextInput from "./TextInput";
 import Dropdown from "./Dropdown";
 import MultiSelectDropdown from "./MultiSelectDropdown";
 
+interface BannerFormData {
+  company_name: string;
+  category: string;
+  taste: string;
+  shape: string;
+  media: string;
+}
+
 interface BannerInfoFormProps {
-  onSubmit: (data: Record<string, any>) => void;
+  onSubmit: (data: BannerFormData) => void;
 }
 
 const BannerInfoForm: React.FC<BannerInfoFormProps> = ({ onSubmit }) => {

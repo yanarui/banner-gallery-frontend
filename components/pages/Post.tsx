@@ -2,6 +2,14 @@ import React, { useState } from "react";
 import BannerInfoForm from "../ui/BannerInfoForm";
 import ImageUploader from "../ui/ImageUploader";
 
+type FormDataType = {
+  company_name: string;
+  category?: string;
+  taste?: string;
+  shape?: string;
+  media?: string;
+};
+
 export default function Post() {
   const [image, setImage] = useState<File | null>(null);
 
@@ -9,7 +17,7 @@ export default function Post() {
     setImage(file);
   };
 
-  const handleFormSubmit = async (data: Record<string, any>) => {
+  const handleFormSubmit = async (data: FormDataType) => {
     if (!image) {
       alert("画像をアップロードしてください");
       return;

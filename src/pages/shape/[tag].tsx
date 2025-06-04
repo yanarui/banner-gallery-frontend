@@ -9,10 +9,17 @@ type Tag = {
   tag_type: string;
 };
 
+type Banner = {
+  id: number;
+  image_url: string;
+  detail_url?: string;
+  tags: Tag[];
+};
+
 export default function TagPage() {
   const router = useRouter();
   const { tag } = router.query;
-  const [banners, setBanners] = useState<any[]>([]);
+  const [banners, setBanners] = useState<Banner[]>([]);
   const [visibleCount, setVisibleCount] = useState<number>(10);
   const loaderRef = useRef<HTMLDivElement>(null);
 
