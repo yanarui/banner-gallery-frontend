@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Header from "../../components/base/Header/Header";
 import Footer from "../../components/base/Footer/Footer";
 import { AspectRatioImageCard } from "../../components/ui/AspectRatioImageCard";
-import ImageCard from "../../components/ui/ImageCard";
 
 type Banner = {
   id: string;
