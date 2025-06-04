@@ -3,8 +3,14 @@ import Header from "../../components/base/Header/Header";
 import Footer from "../../components/base/Footer/Footer";
 import ImageCard from "../../components/ui/ImageCard";
 
+type Banner = {
+  id: string;
+  image_url: string;
+  company_name: string;
+};
+
 export default function MyBanners() {
-  const [banners, setBanners] = useState<any[]>([]);
+  const [banners, setBanners] = useState<Banner[]>([]);
   const [loading, setLoading] = useState(true);
   const [token, setToken] = useState<string | null>(null);
 
