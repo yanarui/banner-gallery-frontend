@@ -8,6 +8,9 @@ const LoadMoreTrigger: React.FC<LoadMoreTriggerProps> = ({ onLoadMore }) => {
   const loaderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const currentLoader = loaderRef.current;
+    if (!currentLoader) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
@@ -17,12 +20,10 @@ const LoadMoreTrigger: React.FC<LoadMoreTriggerProps> = ({ onLoadMore }) => {
       { threshold: 1 }
     );
 
-    if (loaderRef.current) {
-      observer.observe(loaderRef.current);
-    }
+    observer.observe(currentLoader);
 
     return () => {
-      if (loaderRef.current) observer.unobserve(loaderRef.current);
+      observer.unobserve(currentLoader);
     };
   }, [onLoadMore]);
 

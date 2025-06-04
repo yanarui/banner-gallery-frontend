@@ -20,7 +20,7 @@ export default function TagPage() {
   const router = useRouter();
   const { tag } = router.query;
   const [banners, setBanners] = useState<Banner[]>([]);
-  const [visibleCount, setVisibleCount] = useState<number>(10);
+  const [visibleCount] = useState<number>(10);
   const loaderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

@@ -1,13 +1,5 @@
 import React from "react";
-
-interface BannerCardProps {
-  banner: {
-    id: number;
-    image_url: string;
-    company_name: string;
-    tags: { name: string }[];
-  };
-}
+import Image from "next/image";
 
 type Banner = {
   id: number;
@@ -19,7 +11,7 @@ type Banner = {
 const BannerCard = ({ banner }: { banner: Banner }) => {
   return (
     <div className="border rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
-      <img
+      <Image
         src={banner.image_url}
         alt={banner.company_name}
         className="w-full h-48 object-cover"

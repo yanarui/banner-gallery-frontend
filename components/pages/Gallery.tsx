@@ -42,6 +42,10 @@ export default function Gallery() {
   }, []);
 
   useEffect(() => {
+    const currentLoader = loaderRef.current;
+
+    if (!currentLoader) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
@@ -51,14 +55,10 @@ export default function Gallery() {
       { threshold: 1.0 }
     );
 
-    if (loaderRef.current) {
-      observer.observe(loaderRef.current);
-    }
+    observer.observe(currentLoader);
 
     return () => {
-      if (loaderRef.current) {
-        observer.unobserve(loaderRef.current);
-      }
+      observer.unobserve(currentLoader);
     };
   }, [banners]);
 

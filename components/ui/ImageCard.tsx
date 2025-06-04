@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 type ImageCardProps = {
   src: string;
@@ -24,7 +25,7 @@ const ImageCard: React.FC<ImageCardProps> = ({
   boxShadow = "10px 16px 14px -7px rgba(0, 0, 128, 0.2)",
 }) => {
   return (
-    <img
+    <Image
       src={src}
       alt={alt}
       style={{
