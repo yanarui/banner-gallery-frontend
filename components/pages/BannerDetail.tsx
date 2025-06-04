@@ -1,7 +1,20 @@
 import ImageCard from "../ui/ImageCard";
 import BannerInfo from "../ui/BannerInfo";
 
-export default function BannerDetail({ banner }: { banner: any }) {
+type Tag = { name: string; id: number; tag_type: string };
+type Banner = {
+  image_url: string;
+  title: string;
+  company_name: string;
+  tags: {
+    category?: Tag[];
+    taste?: Tag[];
+    shape?: Tag[];
+    media?: Tag[];
+  };
+};
+
+export default function BannerDetail({ banner }: { banner: Banner }) {
   return (
     <div className="flex justify-center items-center mt-6">
       <BannerInfo banner={banner} />

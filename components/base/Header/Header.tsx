@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import DropdownMenu from "../../ui/DropdownMenu";
+import Link from "next/link";
 
 const Header: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -67,7 +68,7 @@ const Header: React.FC = () => {
     <header className="bg-white text-gray-800">
       <div className="relative flex items-center justify-between px-16 py-8 border-b border-gray-800">
         <h1 className="absolute left-1/2 transform -translate-x-1/2 text-2xl font-bold">
-          <a href="/">Banner Gallery</a>
+          <Link href="/">Banner Gallery</Link>
         </h1>
         {isLoggedIn ? (
           <ul className="flex items-center justify-between ml-auto">
@@ -83,10 +84,10 @@ const Header: React.FC = () => {
         ) : (
           <ul className="flex items-center justify-between ml-auto">
             <li className="cursor-pointer border px-10 py-3 mr-10">
-              <a href="/login">LOGIN</a>
+              <Link href="/login">LOGIN</Link>
             </li>
             <li className="cursor-pointer border px-10 py-3">
-              <a href="/signup">SIGN UP</a>
+              <Link href="/signup">SIGN UP</Link>
             </li>
           </ul>
         )}
@@ -95,9 +96,9 @@ const Header: React.FC = () => {
         <nav>
           <ul className="flex justify-center items-center gap-6 list-none m-0 p-0">
             <li>
-              <a href="/" className="text-gray-800 hover:text-gray-600">
+              <Link href="/" className="text-gray-800 hover:text-gray-600">
                 HOME
-              </a>
+              </Link>
             </li>
             <DropdownMenu title="CATEGORY" items={categoryItems} />
             <DropdownMenu title="TASTE" items={tasteItems} />
@@ -106,9 +107,11 @@ const Header: React.FC = () => {
             {isLoggedIn && (
               <>
                 <li>
-                  <a href="/post" className="text-gray-800 hover:text-gray-600">
+                  <Link
+                    href="/post"
+                    className="text-gray-800 hover:text-gray-600">
                     POST
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <a
