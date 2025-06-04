@@ -115,7 +115,7 @@ const Header: React.FC = () => {
                 </li>
                 <li>
                   <a
-                    href="/MyBanners"
+                    href="/mybanners"
                     className="text-gray-800 hover:text-gray-600">
                     MY_BANNERS
                   </a>
