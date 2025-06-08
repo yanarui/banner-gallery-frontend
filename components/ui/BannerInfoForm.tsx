@@ -24,7 +24,6 @@ export default function BannerInfoForm({
   const [taste, setTaste] = useState<string[]>([]);
   const [shape, setShape] = useState<string[]>([]);
   const [media, setMedia] = useState<string[]>([]);
-  const [form, setForm] = useState(initialValues);
 
   useEffect(() => {
     if (initialValues) {

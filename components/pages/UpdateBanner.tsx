@@ -26,7 +26,6 @@ type Banner = {
 };
 
 export default function UpdateBanner({ banner }: { banner: Banner }) {
-  const [banners, setBanners] = useState<Banner[]>([]);
   const handleFormSubmit = async (data: FormDataType) => {
     const token = localStorage.getItem("token");
     if (!token) {
