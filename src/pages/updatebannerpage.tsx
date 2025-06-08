@@ -17,7 +17,7 @@ type Banner = {
   };
 };
 
-export default function UpdateBanner() {
+export default function UpdateBannerPage() {
   const router = useRouter();
   const { id } = router.query;
   const [banner, setBanner] = useState<Banner | null>(null);
