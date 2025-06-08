@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 type Banner = {
   company_name: string;
@@ -30,14 +31,14 @@ const BannerInfo = ({ banner }: { banner: Banner }) => {
             <td className="py-3 text-gray-800">
               {banner.tags.category?.map(
                 (tag: { name: string; id: number; tag_type: string }) => (
-                  <a
+                  <Link
                     href={`/${encodeURIComponent(
                       tag.tag_type
                     )}/${encodeURIComponent(tag.name)}`}
                     key={tag.id}
                     className={`pt-2 px-4 pb-1 my-1 mr-2 border-1 border-gray-800 rounded transition-colors duration-200 hover:bg-gray-100 hover:text-gray-900`}>
                     {tag.name}
-                  </a>
+                  </Link>
                 )
               )}
             </td>
@@ -49,14 +50,14 @@ const BannerInfo = ({ banner }: { banner: Banner }) => {
             <td className="py-3 text-gray-800">
               {banner.tags.taste?.map(
                 (tag: { name: string; id: number; tag_type: string }) => (
-                  <a
+                  <Link
                     href={`/${encodeURIComponent(
                       tag.tag_type
                     )}/${encodeURIComponent(tag.name)}`}
                     key={tag.id}
                     className={`pt-2 px-4 pb-1 my-1 mr-2 border-1 border-gray-800 rounded transition-colors duration-200 hover:bg-gray-100 hover:text-gray-900`}>
                     {tag.name}
-                  </a>
+                  </Link>
                 )
               )}
             </td>
@@ -68,14 +69,14 @@ const BannerInfo = ({ banner }: { banner: Banner }) => {
             <td className="py-3 text-gray-800">
               {banner.tags.shape?.map(
                 (tag: { name: string; id: number; tag_type: string }) => (
-                  <a
+                  <Link
                     href={`/${encodeURIComponent(
                       tag.tag_type
                     )}/${encodeURIComponent(tag.name)}`}
                     key={tag.id}
                     className={`pt-2 px-4 pb-1 my-1 mr-2 border-1 border-gray-800 rounded transition-colors duration-200 hover:bg-gray-100 hover:text-gray-900`}>
                     {tag.name}
-                  </a>
+                  </Link>
                 )
               )}
             </td>
@@ -87,14 +88,14 @@ const BannerInfo = ({ banner }: { banner: Banner }) => {
             <td className="py-3 text-gray-800">
               {banner.tags.media?.map(
                 (tag: { name: string; id: number; tag_type: string }) => (
-                  <a
+                  <Link
                     href={`/${encodeURIComponent(
                       tag.tag_type
                     )}/${encodeURIComponent(tag.name)}`}
                     key={tag.id}
                     className={`pt-2 px-4 pb-1 my-1 mr-2 border-1 border-gray-800 rounded transition-colors duration-200 hover:bg-gray-100 hover:text-gray-900`}>
                     {tag.name}
-                  </a>
+                  </Link>
                 )
               )}
             </td>
