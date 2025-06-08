@@ -88,7 +88,16 @@ export default function Post() {
 
   return (
     <div className="flex items-center justify-center mt-6">
-      <BannerInfoForm onSubmit={handleFormSubmit} />
+      <BannerInfoForm
+        onSubmit={handleFormSubmit}
+        initialValues={{
+          company_name: "",
+          category: "",
+          taste: "",
+          shape: "",
+          media: "",
+        }}
+      />
       <ImageUploader onImageSelect={handleImageSelect} />
     </div>
   );
