@@ -82,7 +82,7 @@ export default function TagPage() {
                 {banner.tags.map((tag: Tag, i: number) => (
                   <a
                     key={i}
-                    href={`${tag.tag_type}/${translateTagName(tag.name)}`}
+                    href={`/${tag.tag_type}/${translateTagName(tag.name)}`}
                     className="inline-block px-3 py-1 mr-2 mb-2 text-xs font-semibold text-gray-800 bg-gray-200 rounded hover:bg-gray-300 hover:text-gray-900 transition-colors duration-200">
                     {tag.name}
                   </a>
