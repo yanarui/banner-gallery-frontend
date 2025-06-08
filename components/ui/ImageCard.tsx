@@ -4,8 +4,8 @@ import Image from "next/image";
 type ImageCardProps = {
   src: string;
   alt?: string;
-  width?: string;
-  height?: string;
+  width: number;
+  height: number;
   maxWidth?: string;
   maxHeight?: string;
   padding?: string;
@@ -16,8 +16,8 @@ type ImageCardProps = {
 const ImageCard: React.FC<ImageCardProps> = ({
   src,
   alt = "Gallery Image",
-  width = "auto",
-  height = "auto",
+  width,
+  height,
   maxWidth = "100%",
   maxHeight = "100%",
   padding = "0",
@@ -28,9 +28,9 @@ const ImageCard: React.FC<ImageCardProps> = ({
     <Image
       src={src}
       alt={alt}
+      width={width}
+      height={height}
       style={{
-        width,
-        height,
         maxWidth,
         maxHeight,
         padding,

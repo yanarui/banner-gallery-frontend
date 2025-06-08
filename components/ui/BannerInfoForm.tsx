@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TextInput from "./TextInput";
 import Dropdown from "./Dropdown";
 import MultiSelectDropdown from "./MultiSelectDropdown";
@@ -15,12 +15,28 @@ interface BannerInfoFormProps {
   onSubmit: (data: BannerFormData) => void;
 }
 
-const BannerInfoForm: React.FC<BannerInfoFormProps> = ({ onSubmit }) => {
+export default function BannerInfoForm({
+  onSubmit,
+  initialValues,
+}: BannerInfoFormProps & { initialValues: BannerFormData }) {
   const [company, setCompany] = useState("");
   const [category, setCategory] = useState<string[]>([]);
   const [taste, setTaste] = useState<string[]>([]);
   const [shape, setShape] = useState<string[]>([]);
   const [media, setMedia] = useState<string[]>([]);
+  const [form, setForm] = useState(initialValues);
+
+  useEffect(() => {
+    if (initialValues) {
+      setCompany(initialValues.company_name || "");
+      setCategory(
+        initialValues.category ? initialValues.category.split(",") : []
+      );
+      setTaste(initialValues.taste ? initialValues.taste.split(",") : []);
+      setShape(initialValues.shape ? initialValues.shape.split(",") : []);
+      setMedia(initialValues.media ? initialValues.media.split(",") : []);
+    }
+  }, [initialValues]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -113,6 +129,4 @@ const BannerInfoForm: React.FC<BannerInfoFormProps> = ({ onSubmit }) => {
       </div>
     </form>
   );
-};
-
-export default BannerInfoForm;
+}

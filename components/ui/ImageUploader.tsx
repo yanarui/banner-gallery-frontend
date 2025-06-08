@@ -63,8 +63,8 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageSelect }) => {
           <ImageCard
             src={preview}
             alt="Preview Image"
-            width="600px"
-            height="600px"
+            width={600}
+            height={600}
           />
         ) : (
           <p className="text-gray-500">

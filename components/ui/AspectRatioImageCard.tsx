@@ -8,18 +8,28 @@ export function AspectRatioImageCard({
   src: string;
   alt: string;
 }) {
-  const [isLandscape, setIsLandscape] = useState<boolean | null>(null);
+  const [dimensions, setDimensions] = useState<{
+    width: number;
+    height: number;
+  } | null>(null);
 
   useEffect(() => {
     const img = new window.Image();
     img.onload = () => {
-      setIsLandscape(img.width >= img.height);
+      const ratio = img.width / img.height;
+      const max = 300;
+      if (ratio >= 1) {
+        // 横長
+        setDimensions({ width: max, height: Math.round(max / ratio) });
+      } else {
+        // 縦長
+        setDimensions({ width: Math.round(max * ratio), height: max });
+      }
     };
     img.src = src;
   }, [src]);
 
-  if (isLandscape === null) {
-    // ローディング中
+  if (!dimensions) {
     return <div style={{ width: 300, height: 300, background: "#eee" }} />;
   }
 
@@ -27,8 +37,8 @@ export function AspectRatioImageCard({
     <ImageCard
       src={src}
       alt={alt}
-      width={isLandscape ? "300px" : "auto"}
-      height={isLandscape ? "auto" : "300px"}
+      width={dimensions.width}
+      height={dimensions.height}
       maxWidth="300px"
       maxHeight="300px"
     />

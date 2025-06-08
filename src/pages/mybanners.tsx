@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import Header from "../../components/base/Header/Header";
 import Footer from "../../components/base/Footer/Footer";
 import { AspectRatioImageCard } from "../../components/ui/AspectRatioImageCard";
@@ -13,6 +14,7 @@ export default function MyBanners() {
   const [banners, setBanners] = useState<Banner[]>([]);
   const [loading, setLoading] = useState(true);
   const [token, setToken] = useState<string | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchMyBanners = async () => {
@@ -47,6 +49,10 @@ export default function MyBanners() {
     fetchMyBanners();
   }, []);
 
+  const handleUpdate = (id: string) => {
+    router.push(`/updatebanner?id=${id}`);
+  };
+
   const handleDelete = async (id: string) => {
     if (!token) {
       alert("ログインしてください。");
@@ -56,6 +62,7 @@ export default function MyBanners() {
     if (!confirm("本当に削除しますか？")) return;
 
     try {
+      console.log("banner.id", id);
       const res = await fetch(
         `https://banner-gallery-backend.onrender.com/api/banners/${id}`,
         {
@@ -102,11 +109,18 @@ export default function MyBanners() {
                       <div className="mt-2 mb-10"></div>
                     </div>
                   </div>
-                  <button
-                    onClick={() => handleDelete(banner.id)}
-                    className="px-4 py-2 mt-2 bg-red-500 text-white rounded hover:bg-red-600 transition">
-                    削除
-                  </button>
+                  <div className="text-right">
+                    <button
+                      onClick={() => handleUpdate(banner.id)}
+                      className="px-4 py-2 mt-2 mr-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition">
+                      更新
+                    </button>
+                    <button
+                      onClick={() => handleDelete(banner.id)}
+                      className="px-4 py-2 mt-2 bg-red-500 text-white rounded hover:bg-red-600 transition">
+                      削除
+                    </button>
+                  </div>
                 </div>
               ))}
             </div>
