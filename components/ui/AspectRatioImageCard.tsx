@@ -1,13 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ImageCard from "./ImageCard";
 
-export function AspectRatioImageCard({
-  src,
-  alt,
-}: {
-  src: string;
-  alt: string;
-}) {
+function AspectRatioImageCard({ src, alt }: { src: string; alt: string }) {
   const [dimensions, setDimensions] = useState<{
     width: number;
     height: number;
@@ -44,3 +38,5 @@ export function AspectRatioImageCard({
     />
   );
 }
+
+export default AspectRatioImageCard;

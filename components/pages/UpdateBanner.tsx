@@ -1,5 +1,5 @@
 import BannerInfoForm from "../ui/BannerInfoForm";
-import { AspectRatioImageCard } from "../ui/AspectRatioImageCard";
+import AspectRatioImageCard from "../ui/AspectRatioImageCard";
 
 type FormDataType = {
   company_name: string;

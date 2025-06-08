@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { AspectRatioImageCard } from "../../components/ui/AspectRatioImageCard";
+import AspectRatioImageCard from "../../components/ui/AspectRatioImageCard";
 
 interface Tag {
   name: string;

@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState, useRef } from "react";
 import Header from "../../../components/base/Header/Header";
 import Footer from "../../../components/base/Footer/Footer";
-import ImageCard from "../../../components/ui/ImageCard";
+import AspectRatioImageCard from "../../../components/ui/AspectRatioImageCard";
 
 type Tag = {
   name: string;
@@ -13,6 +13,7 @@ type Banner = {
   id: number;
   image_url: string;
   detail_url?: string;
+  company_name?: string;
   tags: Tag[];
 };
 
@@ -70,11 +71,9 @@ export default function TagPage() {
                     href={
                       banner.detail_url || `/BannerDetailPage?id=${banner.id}`
                     }>
-                    <ImageCard
+                    <AspectRatioImageCard
                       src={banner.image_url}
-                      alt={`Banner ${i + 1}`}
-                      maxWidth="300px"
-                      maxHeight="300px"
+                      alt={banner.company_name || `Banner ${banner.id}`}
                     />
                   </a>
                 </div>
