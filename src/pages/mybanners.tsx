@@ -50,7 +50,7 @@ export default function MyBanners() {
   }, []);
 
   const handleUpdate = (id: string) => {
-    router.push(`/updatebanner?id=${id}`);
+    router.push(`/updatebannerpage?id=${id}`);
   };
 
   const handleDelete = async (id: string) => {
