@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import DropdownMenu from "../../ui/DropdownMenu";
 import Link from "next/link";
-import MyBanners from "@/pages/mybanners";
 
 const Header: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
