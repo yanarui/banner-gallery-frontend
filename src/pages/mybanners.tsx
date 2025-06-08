@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Header from "../../components/base/Header/Header";
 import Footer from "../../components/base/Footer/Footer";
-import { AspectRatioImageCard } from "../../components/ui/AspectRatioImageCard";
+import AspectRatioImageCard from "../../components/ui/AspectRatioImageCard";
 
 type Banner = {
   id: string;
