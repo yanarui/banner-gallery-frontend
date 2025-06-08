@@ -71,7 +71,7 @@ export default function Gallery() {
           banners.slice(0, visibleCount).map((banner, i) => (
             <div className="mt-2 w-95" key={i}>
               <div className="bg-gray-200 overflow-hidden p-10">
-                <div className="flex justify-center items-center w-[300px] h-[300px] mx-auto my-auto">
+                <div className="flex justify-center items-center w-[300px] h-[300px] mx-auto my-auto ">
                   <Link
                     href={
                       banner.detail_url || `/bannerdetailpage?id=${banner.id}`

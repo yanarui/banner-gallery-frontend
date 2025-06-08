@@ -96,7 +96,9 @@ const Header: React.FC = () => {
         <nav>
           <ul className="flex justify-center items-center gap-6 list-none m-0 p-0">
             <li>
-              <Link href="/" className="text-gray-800 hover:text-gray-600">
+              <Link
+                href="/"
+                className="text-gray-800 hover:text-gray-600 transition-opacity duration-200 hover:opacity-70">
                 HOME
               </Link>
             </li>
@@ -109,14 +111,14 @@ const Header: React.FC = () => {
                 <li>
                   <Link
                     href="/post"
-                    className="text-gray-800 hover:text-gray-600">
+                    className="text-gray-800 hover:text-gray-600 transition-opacity duration-200 hover:opacity-70">
                     POST
                   </Link>
                 </li>
                 <li>
                   <Link
                     href="/mybanners"
-                    className="text-gray-800 hover:text-gray-600">
+                    className="text-gray-800 hover:text-gray-600 transition-opacity duration-200 hover:opacity-70">
                     MY_BANNERS
                   </Link>
                 </li>
