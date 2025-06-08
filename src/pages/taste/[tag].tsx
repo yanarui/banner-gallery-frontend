@@ -70,7 +70,7 @@ export default function TagPage() {
                 <div className="flex justify-center items-center w-[300px] h-[300px] mx-auto my-auto">
                   <Link
                     href={
-                      banner.detail_url || `/BannerDetailPage?id=${banner.id}`
+                      banner.detail_url || `/bannerdetailpage?id=${banner.id}`
                     }>
                     <AspectRatioImageCard
                       src={banner.image_url}
