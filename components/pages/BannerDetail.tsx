@@ -1,4 +1,4 @@
-import { AspectRatioImageCard } from "../ui/AspectRatioImageCard";
+import AspectRatioImageCard from "../ui/AspectRatioImageCard";
 import BannerInfo from "../ui/BannerInfo";
 
 type Tag = { name: string; id: number; tag_type: string };
