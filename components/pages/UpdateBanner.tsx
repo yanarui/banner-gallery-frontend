@@ -115,11 +115,12 @@ export default function UpdateBanner({ banner }: { banner: Banner }) {
         }}
       />
       <div className="pr-0 pb-7 pl-20">
-        <div className="bg-gray-200 overflow-hidden p-10 mt-20 mb-20">
-          <div className="flex justify-center items-center mx-auto my-auto">
+        <div className="bg-gray-200 overflow-hidden p-10">
+          <div className="flex justify-center items-center w-[400px] h-[400px]">
             <AspectRatioImageCard
               src={banner.image_url}
-              alt={banner.company_name || `Banner ${banner.id}`}
+              alt={banner.title}
+              max={400}
             />
           </div>
         </div>

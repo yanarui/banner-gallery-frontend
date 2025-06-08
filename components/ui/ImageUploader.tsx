@@ -45,7 +45,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageSelect }) => {
     <div className="pr-0 pb-7 pl-20">
       <label
         htmlFor="image-upload"
-        className={`mb-4 w-[600px] h-[600px] p-10 flex items-center justify-center cursor-pointer ${
+        className={`mb-4 w-[480px] h-[480px] p-10 flex items-center justify-center cursor-pointer ${
           isDragging ? "bg-blue-100 border-2 border-blue-500" : "bg-gray-200"
         }`}
         onDrop={handleDrop}
@@ -63,8 +63,8 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageSelect }) => {
           <ImageCard
             src={preview}
             alt="Preview Image"
-            width={600}
-            height={600}
+            width={400}
+            height={400}
           />
         ) : (
           <p className="text-gray-500">

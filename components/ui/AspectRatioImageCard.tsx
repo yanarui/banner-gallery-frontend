@@ -1,7 +1,17 @@
 import React, { useEffect, useState } from "react";
 import ImageCard from "./ImageCard";
 
-function AspectRatioImageCard({ src, alt }: { src: string; alt: string }) {
+type AspectRatioImageCardProps = {
+  src: string;
+  alt: string;
+  max?: number;
+};
+
+function AspectRatioImageCard({
+  src,
+  alt,
+  max = 300,
+}: AspectRatioImageCardProps) {
   const [dimensions, setDimensions] = useState<{
     width: number;
     height: number;
@@ -11,20 +21,17 @@ function AspectRatioImageCard({ src, alt }: { src: string; alt: string }) {
     const img = new window.Image();
     img.onload = () => {
       const ratio = img.width / img.height;
-      const max = 300;
       if (ratio >= 1) {
-        // 横長
         setDimensions({ width: max, height: Math.round(max / ratio) });
       } else {
-        // 縦長
         setDimensions({ width: Math.round(max * ratio), height: max });
       }
     };
     img.src = src;
-  }, [src]);
+  }, [src, max]);
 
   if (!dimensions) {
-    return <div style={{ width: 300, height: 300, background: "#eee" }} />;
+    return <div style={{ width: max, height: max, background: "#eee" }} />;
   }
 
   return (
@@ -33,8 +40,8 @@ function AspectRatioImageCard({ src, alt }: { src: string; alt: string }) {
       alt={alt}
       width={dimensions.width}
       height={dimensions.height}
-      maxWidth="300px"
-      maxHeight="300px"
+      maxWidth={`${max}px`}
+      maxHeight={`${max}px`}
     />
   );
 }

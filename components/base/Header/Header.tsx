@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import DropdownMenu from "../../ui/DropdownMenu";
 import Link from "next/link";
+import MyBanners from "@/pages/mybanners";
 
 const Header: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -73,7 +74,7 @@ const Header: React.FC = () => {
         {isLoggedIn ? (
           <ul className="flex items-center justify-between ml-auto">
             <li className="cursor-pointer border px-10 py-3 mr-10">
-              <p>{username}</p>
+              <Link href="/mybanners">{username}</Link>
             </li>
             <li
               className="cursor-pointer border px-10 py-3"

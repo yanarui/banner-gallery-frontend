@@ -19,9 +19,13 @@ export default function BannerDetail({ banner }: { banner: Banner }) {
     <div className="flex justify-center items-center mt-6">
       <BannerInfo banner={banner} />
       <div className="pr-0 pb-7 pl-20">
-        <div className="bg-gray-200 overflow-hidden p-10 mt-20 mb-20">
-          <div className="flex justify-center items-center mx-auto my-auto">
-            <AspectRatioImageCard src={banner.image_url} alt={banner.title} />
+        <div className="bg-gray-200 overflow-hidden p-10">
+          <div className="flex justify-center items-center w-[400px] h-[400px]">
+            <AspectRatioImageCard
+              src={banner.image_url}
+              alt={banner.title}
+              max={400}
+            />
           </div>
         </div>
       </div>

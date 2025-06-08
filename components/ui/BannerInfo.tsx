@@ -13,39 +13,6 @@ type Banner = {
 };
 
 const BannerInfo = ({ banner }: { banner: Banner }) => {
-  const tagTranslations: { [key: string]: string } = {
-    ファッション: "fashion",
-    テクノロジー: "technology",
-    スポーツ: "sports",
-    "飲食・グルメ": "food",
-    "美容・コスメ": "beauty",
-    "旅行・観光": "travel",
-    "教育・学習": "education",
-    エンタメ: "entertainment",
-    ライフスタイル: "lifestyle",
-    "金融・保険": "finance",
-    かわいい: "cute",
-    かっこいい: "cool",
-    高級感: "luxurious",
-    ポップ: "pop",
-    ミニマル: "minimal",
-    レトロ: "retro",
-    ナチュラル: "natural",
-    エレガント: "elegant",
-    シンプル: "simple",
-    シズル感: "sizzle",
-    正方形: "square",
-    縦長: "vertical",
-    横長: "landscape",
-    Instagram: "instagram",
-    X: "x",
-    LINE: "line",
-  };
-
-  const translateTagName = (name: string): string => {
-    return tagTranslations[name] || name;
-  };
-
   return (
     <div className="pr-15 pb-7 border-r-1 border-gray-800">
       <table>
@@ -64,7 +31,9 @@ const BannerInfo = ({ banner }: { banner: Banner }) => {
               {banner.tags.category?.map(
                 (tag: { name: string; id: number; tag_type: string }) => (
                   <a
-                    href={`${tag.tag_type}/${translateTagName(tag.name)}`}
+                    href={`/${encodeURIComponent(
+                      tag.tag_type
+                    )}/${encodeURIComponent(tag.name)}`}
                     key={tag.id}
                     className={`pt-2 px-4 pb-1 my-1 mr-2 border-1 border-gray-800 rounded transition-colors duration-200 hover:bg-gray-100 hover:text-gray-900`}>
                     {tag.name}
@@ -81,7 +50,9 @@ const BannerInfo = ({ banner }: { banner: Banner }) => {
               {banner.tags.taste?.map(
                 (tag: { name: string; id: number; tag_type: string }) => (
                   <a
-                    href={`${tag.tag_type}/${translateTagName(tag.name)}`}
+                    href={`/${encodeURIComponent(
+                      tag.tag_type
+                    )}/${encodeURIComponent(tag.name)}`}
                     key={tag.id}
                     className={`pt-2 px-4 pb-1 my-1 mr-2 border-1 border-gray-800 rounded transition-colors duration-200 hover:bg-gray-100 hover:text-gray-900`}>
                     {tag.name}
@@ -98,7 +69,9 @@ const BannerInfo = ({ banner }: { banner: Banner }) => {
               {banner.tags.shape?.map(
                 (tag: { name: string; id: number; tag_type: string }) => (
                   <a
-                    href={`${tag.tag_type}/${translateTagName(tag.name)}`}
+                    href={`/${encodeURIComponent(
+                      tag.tag_type
+                    )}/${encodeURIComponent(tag.name)}`}
                     key={tag.id}
                     className={`pt-2 px-4 pb-1 my-1 mr-2 border-1 border-gray-800 rounded transition-colors duration-200 hover:bg-gray-100 hover:text-gray-900`}>
                     {tag.name}
@@ -115,7 +88,9 @@ const BannerInfo = ({ banner }: { banner: Banner }) => {
               {banner.tags.media?.map(
                 (tag: { name: string; id: number; tag_type: string }) => (
                   <a
-                    href={`${tag.tag_type}/${translateTagName(tag.name)}`}
+                    href={`/${encodeURIComponent(
+                      tag.tag_type
+                    )}/${encodeURIComponent(tag.name)}`}
                     key={tag.id}
                     className={`pt-2 px-4 pb-1 my-1 mr-2 border-1 border-gray-800 rounded transition-colors duration-200 hover:bg-gray-100 hover:text-gray-900`}>
                     {tag.name}
