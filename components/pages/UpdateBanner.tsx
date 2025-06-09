@@ -103,7 +103,7 @@ export default function UpdateBanner({ banner }: { banner: Banner }) {
   };
 
   return (
-    <div className="flex justify-center items-center mt-6">
+    <div className="flex-grow flex items-center justify-center">
       <BannerInfoForm
         onSubmit={handleFormSubmit}
         initialValues={{
