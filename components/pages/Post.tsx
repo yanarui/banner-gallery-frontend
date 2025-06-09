@@ -87,7 +87,7 @@ export default function Post() {
   };
 
   return (
-    <div className="flex items-center justify-center mt-6">
+    <div className="flex-grow flex items-center justify-center">
       <BannerInfoForm
         onSubmit={handleFormSubmit}
         initialValues={{

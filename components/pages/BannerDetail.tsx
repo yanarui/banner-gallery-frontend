@@ -16,7 +16,7 @@ type Banner = {
 
 export default function BannerDetail({ banner }: { banner: Banner }) {
   return (
-    <div className="flex justify-center items-center mt-6">
+    <div className="flex justify-center items-center">
       <BannerInfo banner={banner} />
       <div className="pr-0 pb-7 pl-20">
         <div className="bg-gray-200 overflow-hidden p-10">

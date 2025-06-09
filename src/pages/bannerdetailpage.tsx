@@ -38,7 +38,7 @@ export default function BannerDetailPage() {
   return (
     <div className="bg-white flex flex-col min-h-screen">
       <Header />
-      <div className="flex justify-center items-center">
+      <div className="flex-grow flex items-center justify-center">
         <BannerDetail banner={banner} />
       </div>
       <Footer />
