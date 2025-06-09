@@ -37,7 +37,7 @@ export default function UpdateBannerPage() {
   return (
     <div className="bg-white flex flex-col min-h-screen">
       <Header />
-      <div className="flex justify-center items-center">
+      <div className="flex-grow flex items-center justify-center">
         <UpdateBanner banner={banner} />
       </div>
       <Footer />
