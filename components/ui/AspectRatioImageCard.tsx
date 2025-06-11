@@ -5,12 +5,14 @@ type AspectRatioImageCardProps = {
   src: string;
   alt: string;
   max?: number;
+  boxShadow?: string;
 };
 
 function AspectRatioImageCard({
   src,
   alt,
   max = 300,
+  boxShadow,
 }: AspectRatioImageCardProps) {
   const [dimensions, setDimensions] = useState<{
     width: number;
@@ -42,6 +44,7 @@ function AspectRatioImageCard({
       height={dimensions.height}
       maxWidth={`${max}px`}
       maxHeight={`${max}px`}
+      boxShadow={boxShadow}
     />
   );
 }

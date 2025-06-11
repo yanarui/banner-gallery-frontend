@@ -19,7 +19,23 @@ export default function Gallery() {
   const [banners, setBanners] = useState<Banner[]>([]);
   const [visibleCount, setVisibleCount] = useState(12);
   const loaderRef = useRef<HTMLDivElement | null>(null);
-  const [imageMax, setImageMax] = useState(180);
+  const [imageMax, setImageMax] = useState(160);
+  const [boxShadow, setBoxShadow] = useState(
+    "5px 8px 7px -4px rgba(0, 0, 128, 0.2)"
+  );
+
+  useEffect(() => {
+    const handleResize = () => {
+      setBoxShadow(
+        window.innerWidth < 640
+          ? "5px 8px 7px -4px rgba(0, 0, 128, 0.2)"
+          : "10px 16px 14px -7px rgba(0, 0, 128, 0.2)"
+      );
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -77,7 +93,7 @@ export default function Gallery() {
   }, [banners]);
 
   return (
-    <div className="w-full sm:w-max mx-auto bg-white mt-6">
+    <div className="w-full sm:w-max sm:mx-auto bg-white mt-6 mr-3 px-3">
       <div className="grid grid-cols-2 gap-[10px] sm:gap-[20px] breakpoint-1190 breakpoint-1590">
         {Array.isArray(banners) &&
           banners.slice(0, visibleCount).map((banner, i) => (
@@ -92,6 +108,7 @@ export default function Gallery() {
                       src={banner.image_url}
                       alt={banner.company_name || `Banner ${banner.id}`}
                       max={imageMax}
+                      boxShadow={boxShadow}
                     />
                   </Link>
                 </div>
