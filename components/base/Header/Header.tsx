@@ -6,6 +6,7 @@ import Link from "next/link";
 const Header: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState<string | null>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -65,40 +66,50 @@ const Header: React.FC = () => {
   ];
 
   return (
-    <header className="bg-white text-gray-800">
-      <div className="relative flex items-center justify-between px-16 py-8 border-b border-gray-800">
-        <h1 className="absolute left-1/2 transform -translate-x-1/2 text-2xl font-bold">
+    <header className="w-full bg-white text-gray-800">
+      <div className="flex relative items-center justify-between border-b border-gray-800 px-4 py-4 sm:px-16 sm:py-8">
+        <h1 className="text-2xl font-bold mx-auto sm:absolute sm:left-1/2 sm:-translate-x-1/2 sm:transform">
           <Link href="/">Banner Gallery</Link>
         </h1>
-        {isLoggedIn ? (
-          <ul className="flex items-center justify-between ml-auto">
-            <li className="cursor-pointer border px-10 py-3 mr-10">
-              <Link href="/mybanners">{username}</Link>
-            </li>
-            <li
-              className="cursor-pointer border px-10 py-3"
-              onClick={handleLogout}>
-              <p>LOGOUT</p>
-            </li>
-          </ul>
-        ) : (
-          <ul className="flex items-center justify-between ml-auto">
-            <li className="cursor-pointer border px-10 py-3 mr-10">
-              <Link href="/login">LOGIN</Link>
-            </li>
-            <li className="cursor-pointer border px-10 py-3">
-              <Link href="/signup">SIGN UP</Link>
-            </li>
-          </ul>
-        )}
+        <button
+          className="absolute right-4 top-1/2 z-20 -translate-y-1/2 sm:hidden"
+          onClick={() => setMenuOpen((prev) => !prev)}
+          aria-label="メニューを開く">
+          <span className="block h-1 w-7 rounded bg-gray-800 mb-1 transition-all"></span>
+          <span className="block h-1 w-7 rounded bg-gray-800 mb-1 transition-all"></span>
+          <span className="block h-1 w-7 rounded bg-gray-800 transition-all"></span>
+        </button>
+        <ul className="ml-auto hidden items-center justify-between sm:flex">
+          {isLoggedIn ? (
+            <>
+              <li className="mr-4 cursor-pointer border px-6 py-2">
+                <Link href="/mybanners">{username}</Link>
+              </li>
+              <li
+                className="cursor-pointer border px-6 py-2"
+                onClick={handleLogout}>
+                <p>LOGOUT</p>
+              </li>
+            </>
+          ) : (
+            <>
+              <li className="mr-4 cursor-pointer border px-6 py-2">
+                <Link href="/login">LOGIN</Link>
+              </li>
+              <li className="cursor-pointer border px-6 py-2">
+                <Link href="/signup">SIGN UP</Link>
+              </li>
+            </>
+          )}
+        </ul>
       </div>
-      <div className="py-12 text-2xl font-bold border-b border-gray-800">
-        <nav>
-          <ul className="flex justify-center items-center gap-6 list-none m-0 p-0">
+      <div className="border-b border-gray-800">
+        <nav className="hidden py-8 font-bold text-2xl sm:block">
+          <ul className="m-0 flex list-none items-center justify-center gap-6 p-0">
             <li>
               <Link
                 href="/"
-                className="text-gray-800 hover:text-gray-600 transition-opacity duration-200 hover:opacity-70">
+                className="text-gray-800 transition-opacity duration-200 hover:text-gray-600 hover:opacity-70">
                 HOME
               </Link>
             </li>
@@ -111,14 +122,14 @@ const Header: React.FC = () => {
                 <li>
                   <Link
                     href="/post"
-                    className="text-gray-800 hover:text-gray-600 transition-opacity duration-200 hover:opacity-70">
+                    className="text-gray-800 transition-opacity duration-200 hover:text-gray-600 hover:opacity-70">
                     POST
                   </Link>
                 </li>
                 <li>
                   <Link
                     href="/mybanners"
-                    className="text-gray-800 hover:text-gray-600 transition-opacity duration-200 hover:opacity-70">
+                    className="text-gray-800 transition-opacity duration-200 hover:text-gray-600 hover:opacity-70">
                     MY_BANNERS
                   </Link>
                 </li>
@@ -126,6 +137,61 @@ const Header: React.FC = () => {
             )}
           </ul>
         </nav>
+
+        <nav
+          className={`fixed top-0 left-0 z-10 h-full w-full bg-white transition-transform duration-300 sm:hidden ${
+            menuOpen ? "translate-x-0" : "-translate-x-full"
+          }`}>
+          <div className="flex flex-col items-center gap-6 pt-24 text-lg font-bold">
+            <Link href="/" onClick={() => setMenuOpen(false)}>
+              HOME
+            </Link>
+            <DropdownMenu title="CATEGORY" items={categoryItems} />
+            <DropdownMenu title="TASTE" items={tasteItems} />
+            <DropdownMenu title="SHAPE" items={shapeItems} />
+            <DropdownMenu title="MEDIA" items={mediaItems} />
+            {isLoggedIn ? (
+              <>
+                <Link href="/post" onClick={() => setMenuOpen(false)}>
+                  POST
+                </Link>
+                <Link href="/mybanners" onClick={() => setMenuOpen(false)}>
+                  MY_BANNERS
+                </Link>
+                <button
+                  className="mt-4 border px-6 py-2"
+                  onClick={() => {
+                    handleLogout();
+                    setMenuOpen(false);
+                  }}>
+                  LOGOUT
+                </button>
+              </>
+            ) : (
+              <div className="flex">
+                <Link
+                  href="/login"
+                  className="mx-4 mt-4 border px-6 py-2"
+                  onClick={() => setMenuOpen(false)}>
+                  LOGIN
+                </Link>
+                <Link
+                  href="/signup"
+                  className="mx-4 mt-4 border px-6 py-2"
+                  onClick={() => setMenuOpen(false)}>
+                  SIGN UP
+                </Link>
+              </div>
+            )}
+          </div>
+        </nav>
+
+        {menuOpen && (
+          <div
+            className="fixed inset-0 z-0 bg-black opacity-30 sm:hidden"
+            onClick={() => setMenuOpen(false)}
+          />
+        )}
       </div>
     </header>
   );
