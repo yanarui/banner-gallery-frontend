@@ -19,6 +19,18 @@ export default function Gallery() {
   const [banners, setBanners] = useState<Banner[]>([]);
   const [visibleCount, setVisibleCount] = useState(12);
   const loaderRef = useRef<HTMLDivElement | null>(null);
+  const [imageMax, setImageMax] = useState(180);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setImageMax(window.innerWidth < 640 ? 160 : 300);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  });
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -65,13 +77,13 @@ export default function Gallery() {
   }, [banners]);
 
   return (
-    <div className="w-max mx-auto bg-white mt-6">
-      <div className="grid grid-cols-2 gap-[20px] breakpoint-1190 breakpoint-1590">
+    <div className="w-full sm:w-max mx-auto bg-white mt-6">
+      <div className="grid grid-cols-2 gap-[10px] sm:gap-[20px] breakpoint-1190 breakpoint-1590">
         {Array.isArray(banners) &&
           banners.slice(0, visibleCount).map((banner, i) => (
-            <div className="mt-2 w-95" key={i}>
-              <div className="bg-gray-200 overflow-hidden p-10">
-                <div className="flex justify-center items-center w-[300px] h-[300px] mx-auto my-auto ">
+            <div className="mt-2 w-full sm:w-95" key={i}>
+              <div className="bg-gray-200 overflow-hidden p-3 sm:p-10">
+                <div className="flex justify-center items-center w-[160px] h-[160px] sm:w-[300px] sm:h-[300px] mx-auto my-auto relative group rounded">
                   <Link
                     href={
                       banner.detail_url || `/bannerdetailpage?id=${banner.id}`
@@ -79,6 +91,7 @@ export default function Gallery() {
                     <AspectRatioImageCard
                       src={banner.image_url}
                       alt={banner.company_name || `Banner ${banner.id}`}
+                      max={imageMax}
                     />
                   </Link>
                 </div>
@@ -90,7 +103,7 @@ export default function Gallery() {
                     href={`/${encodeURIComponent(
                       tag.tag_type
                     )}/${encodeURIComponent(tag.name)}`}
-                    className="inline-block px-3 py-1 mr-2 mb-2 text-xs font-semibold text-gray-800 bg-gray-200 rounded hover:bg-gray-300 hover:text-gray-900 transition-colors duration-200">
+                    className="inline-block px-2 py-1 mr-2 mb-2 text-xs sm:text-base font-semibold text-gray-800 bg-gray-200 rounded hover:bg-gray-300 hover:text-gray-900 transition-colors duration-200">
                     {tag.name}
                   </Link>
                 ))}
