@@ -158,14 +158,19 @@ const Header: React.FC = () => {
                 <Link href="/mybanners" onClick={() => setMenuOpen(false)}>
                   MY_BANNERS
                 </Link>
-                <button
-                  className="mt-4 border px-6 py-2"
-                  onClick={() => {
-                    handleLogout();
-                    setMenuOpen(false);
-                  }}>
-                  LOGOUT
-                </button>
+                <div className="flex">
+                  <button
+                    className="mx-4 mt-4 border px-6 py-2"
+                    onClick={() => {
+                      handleLogout();
+                      setMenuOpen(false);
+                    }}>
+                    LOGOUT
+                  </button>
+                  <p className="mx-4 mt-4 border px-6 py-2">
+                    <Link href="/mybanners">{username}</Link>
+                  </p>
+                </div>
               </>
             ) : (
               <div className="flex">
