@@ -44,7 +44,7 @@ export default function BannerDetail({ banner }: { banner: Banner }) {
           </div>
         </div>
       </div>
-      <div className="w-full sm:w-auto sm:order-1 flex justify-center sm:block">
+      <div className="w-full flex justify-center sm:block">
         <BannerInfo banner={banner} />
       </div>
     </div>
