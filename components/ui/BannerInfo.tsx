@@ -37,7 +37,7 @@ const BannerInfo = ({ banner }: { banner: Banner }) => {
                         tag.tag_type
                       )}/${encodeURIComponent(tag.name)}`}
                       key={tag.id}
-                      className="whitespace-nowrap pt-2 pb-2 px-2 mb-2 mr-2 text-xs sm:py-2 sm:px-4 sm:mt-0.5 sm:mb-1 sm:text-sm border-1 border-gray-800 rounded transition-colors duration-200 hover:bg-gray-100 hover:text-gray-900">
+                      className="whitespace-nowrap pt-2 pb-2 px-2 mr-2 text-xs sm:py-2 sm:px-4 sm:mt-0.5 sm:mb-1 sm:text-sm border-1 border-gray-800 rounded transition-colors duration-200 hover:bg-gray-100 hover:text-gray-900">
                       {tag.name}
                     </Link>
                   )
@@ -46,7 +46,7 @@ const BannerInfo = ({ banner }: { banner: Banner }) => {
             </td>
           </tr>
           <tr className="mb-5">
-            <td className="align-top py-5 pr-5 pl-6 sm:pr-7 sm:pl-3 sm:text-lg text-gray-800 font-bold text-left">
+            <td className="align-top pt-2.5 pb-5 pr-5 pl-6 sm:pr-7 sm:pl-3 sm:text-lg text-gray-800 font-bold text-left">
               TASTE
             </td>
             <td className="sm:py-3 text-gray-800">
@@ -58,7 +58,7 @@ const BannerInfo = ({ banner }: { banner: Banner }) => {
                         tag.tag_type
                       )}/${encodeURIComponent(tag.name)}`}
                       key={tag.id}
-                      className="whitespace-nowrap pt-2 pb-2 px-2 mb-2 mr-2 text-xs sm:py-2 sm:px-4 sm:mt-0.5 sm:mb-1 sm:text-sm border-1 border-gray-800 rounded transition-colors duration-200 hover:bg-gray-100 hover:text-gray-900">
+                      className="whitespace-nowrap pt-2 pb-2 px-2 my-1 mr-2 text-xs sm:py-2 sm:px-4 sm:mt-0.5 sm:mb-1 sm:text-sm border-1 border-gray-800 rounded transition-colors duration-200 hover:bg-gray-100 hover:text-gray-900">
                       {tag.name}
                     </Link>
                   )
@@ -79,7 +79,7 @@ const BannerInfo = ({ banner }: { banner: Banner }) => {
                         tag.tag_type
                       )}/${encodeURIComponent(tag.name)}`}
                       key={tag.id}
-                      className="whitespace-nowrap pt-2 pb-2 px-2 mb-2 mr-2 text-xs sm:py-2 sm:px-4 sm:mt-0.5 sm:mb-1 sm:text-sm border-1 border-gray-800 rounded transition-colors duration-200 hover:bg-gray-100 hover:text-gray-900">
+                      className="whitespace-nowrap pt-2 pb-2 px-2 mr-2 text-xs sm:py-2 sm:px-4 sm:mt-0.5 sm:mb-1 sm:text-sm border-1 border-gray-800 rounded transition-colors duration-200 hover:bg-gray-100 hover:text-gray-900">
                       {tag.name}
                     </Link>
                   )
@@ -100,7 +100,7 @@ const BannerInfo = ({ banner }: { banner: Banner }) => {
                         tag.tag_type
                       )}/${encodeURIComponent(tag.name)}`}
                       key={tag.id}
-                      className="whitespace-nowrap pt-2 pb-2 px-2 mb-2 mr-2 text-xs sm:py-2 sm:px-4 sm:mt-0.5 sm:mb-1 sm:text-sm border-1 border-gray-800 rounded transition-colors duration-200 hover:bg-gray-100 hover:text-gray-900">
+                      className="whitespace-nowrap pt-2 pb-2 px-2 mr-2 text-xs sm:py-2 sm:px-4 sm:mt-0.5 sm:mb-1 sm:text-sm border-1 border-gray-800 rounded transition-colors duration-200 hover:bg-gray-100 hover:text-gray-900">
                       {tag.name}
                     </Link>
                   )
