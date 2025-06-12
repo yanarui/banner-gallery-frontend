@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import AspectRatioImageCard from "../ui/AspectRatioImageCard";
 import BannerInfo from "../ui/BannerInfo";
 
@@ -15,19 +16,36 @@ type Banner = {
 };
 
 export default function BannerDetail({ banner }: { banner: Banner }) {
+  const [imageMax, setImageMax] = useState(300);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setImageMax(window.innerWidth < 640 ? 300 : 400);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  });
+
   return (
-    <div className="flex justify-center items-center">
-      <BannerInfo banner={banner} />
-      <div className="pr-0 pb-7 pl-20">
-        <div className="bg-gray-200 overflow-hidden p-10">
-          <div className="flex justify-center items-center w-[400px] h-[400px]">
-            <AspectRatioImageCard
-              src={banner.image_url}
-              alt={banner.title}
-              max={400}
-            />
+    <div className="flex flex-col sm:flex-row sm:justify-center sm:items-center">
+      <div className="w-full flex justify-center sm:order-2">
+        <div className="sm:pr-0 sm:pb-7 sm:pl-20">
+          <div className="bg-gray-200 overflow-hidden mt-6 p-6 sm:p-10">
+            <div className="flex justify-center items-center w-[300px] h-[300px] sm:w-[400px] sm:h-[400px]">
+              <AspectRatioImageCard
+                src={banner.image_url}
+                alt={banner.title}
+                max={imageMax}
+              />
+            </div>
           </div>
         </div>
+      </div>
+      <div className="w-full sm:w-auto sm:order-1 flex justify-center sm:block">
+        <BannerInfo banner={banner} />
       </div>
     </div>
   );
