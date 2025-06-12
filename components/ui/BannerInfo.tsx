@@ -46,7 +46,7 @@ const BannerInfo = ({ banner }: { banner: Banner }) => {
             </td>
           </tr>
           <tr className="mb-5">
-            <td className="align-top pt-2.5 pb-5 pr-5 pl-6 sm:pr-7 sm:pl-3 sm:text-lg text-gray-800 font-bold text-left">
+            <td className="align-top py-5 pr-5 pl-6 sm:pr-7 sm:pl-3 sm:text-lg text-gray-800 font-bold text-left">
               TASTE
             </td>
             <td className="sm:py-3 text-gray-800">
