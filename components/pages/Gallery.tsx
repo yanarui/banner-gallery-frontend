@@ -15,8 +15,11 @@ interface Banner {
   company_name?: string;
 }
 
-export default function Gallery() {
-  const [banners, setBanners] = useState<Banner[]>([]);
+type GalleryProps = {
+  banners: Banner[];
+};
+
+export default function Gallery({ banners = [] }: GalleryProps) {
   const [visibleCount, setVisibleCount] = useState(12);
   const loaderRef = useRef<HTMLDivElement | null>(null);
   const [imageMax, setImageMax] = useState(160);
@@ -31,6 +34,7 @@ export default function Gallery() {
           ? "5px 8px 7px -4px rgba(0, 0, 128, 0.2)"
           : "10px 16px 14px -7px rgba(0, 0, 128, 0.2)"
       );
+      setImageMax(window.innerWidth < 640 ? 160 : 300);
     };
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -38,42 +42,7 @@ export default function Gallery() {
   }, []);
 
   useEffect(() => {
-    const handleResize = () => {
-      setImageMax(window.innerWidth < 640 ? 160 : 300);
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  });
-
-  useEffect(() => {
-    const fetchImages = async () => {
-      try {
-        const res = await fetch(
-          "https://banner-gallery-backend.onrender.com/api/banners"
-        );
-        const data = await res.json();
-
-        if (Array.isArray(data)) {
-          setBanners(data);
-        } else {
-          console.error("Invalid data format:", data);
-          setBanners([]);
-        }
-      } catch (error) {
-        console.error("Error fetching images:", error);
-        setBanners([]);
-      }
-    };
-
-    fetchImages();
-  }, []);
-
-  useEffect(() => {
     const currentLoader = loaderRef.current;
-
     if (!currentLoader) return;
 
     const observer = new IntersectionObserver(
@@ -97,7 +66,7 @@ export default function Gallery() {
       <div className="grid grid-cols-2 gap-[10px] sm:gap-[20px] breakpoint-1190 breakpoint-1590">
         {Array.isArray(banners) &&
           banners.slice(0, visibleCount).map((banner, i) => (
-            <div className="mt-2 w-full sm:w-95" key={i}>
+            <div className="w-full mt-2 sm:w-95" key={i}>
               <div className="bg-gray-200 overflow-hidden p-3 sm:p-10">
                 <div className="flex justify-center items-center w-[160px] h-[160px] sm:w-[300px] sm:h-[300px] mx-auto my-auto relative group rounded">
                   <Link
@@ -128,7 +97,7 @@ export default function Gallery() {
             </div>
           ))}
       </div>
-      {visibleCount < banners.length && (
+      {banners && visibleCount < banners.length && (
         <div ref={loaderRef} className="h-10"></div>
       )}
     </div>
