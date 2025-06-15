@@ -54,7 +54,7 @@ export default function BannerInfoForm({
   return (
     <form
       onSubmit={handleSubmit}
-      className="pr-6 sm:pr-15 sm:pb-7 sm:border-r-1 sm:border-gray-800">
+      className="px-6 sm:pr-15 sm:pb-7 sm:border-r-1 sm:border-gray-800">
       <table>
         <tbody>
           <TextInput
@@ -119,7 +119,7 @@ export default function BannerInfoForm({
           />
         </tbody>
       </table>
-      <div className="flex justify-center items-center mt-10">
+      <div className="flex justify-center items-center my-10">
         <button
           type="submit"
           className="px-10 py-8 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300 ease-in-out">

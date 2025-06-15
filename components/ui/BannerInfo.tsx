@@ -15,7 +15,7 @@ type Banner = {
 
 const BannerInfo = ({ banner }: { banner: Banner }) => {
   return (
-    <div className="pr-6 sm:pr-15 sm:pb-7 sm:border-r-1 sm:border-gray-800">
+    <div className="px-6 sm:pr-15 sm:pb-7 sm:border-r-1 sm:border-gray-800">
       <table>
         <tbody>
           <tr>

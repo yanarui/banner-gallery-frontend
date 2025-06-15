@@ -24,7 +24,7 @@ const Dropdown: React.FC<DropdownProps> = ({
 
   return (
     <tr className="border-b-1 border-gray-800">
-      <td className="align-top py-5 pr-5 pl-6sm:py-5 sm:pr-7 sm:pl-3 sm:text-lg text-gray-800 font-bold text-left">
+      <td className="sm:lign-top py-5 pr-5 pl-6 sm:py-5 sm:pr-7 sm:pl-3 sm:text-lg text-gray-800 font-bold text-left">
         {label}
       </td>
       <td className="py-3 text-gray-800">
