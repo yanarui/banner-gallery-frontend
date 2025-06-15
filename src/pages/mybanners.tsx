@@ -5,11 +5,6 @@ import Footer from "../../components/base/Footer/Footer";
 import AspectRatioImageCard from "../../components/ui/AspectRatioImageCard";
 import Link from "next/link";
 
-interface Tag {
-  name: string;
-  tag_type: string;
-}
-
 interface Banner {
   id: number;
   image_url: string;
