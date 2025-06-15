@@ -72,12 +72,21 @@ const Header: React.FC = () => {
           <Link href="/">Banner Gallery</Link>
         </h1>
         <button
-          className="absolute right-4 top-1/2 z-20 -translate-y-1/2 sm:hidden"
+          className="fixed top-3 right-4 z-50 sm:hidden bg-gray-100 rounded-sm p-3 shadow"
           onClick={() => setMenuOpen((prev) => !prev)}
           aria-label="メニューを開く">
-          <span className="block h-1 w-7 rounded bg-gray-800 mb-1 transition-all"></span>
-          <span className="block h-1 w-7 rounded bg-gray-800 mb-1 transition-all"></span>
-          <span className="block h-1 w-7 rounded bg-gray-800 transition-all"></span>
+          <span
+            className={`block h-1 w-7 rounded bg-gray-800 mb-1 transition-all duration-300 ${
+              menuOpen ? "rotate-45 translate-y-2" : ""
+            }`}></span>
+          <span
+            className={`block h-1 w-7 rounded bg-gray-800 mb-1 transition-all duration-300 ${
+              menuOpen ? "opacity-0" : ""
+            }`}></span>
+          <span
+            className={`block h-1 w-7 rounded bg-gray-800 transition-all duration-300 ${
+              menuOpen ? "-rotate-45 -translate-y-2" : ""
+            }`}></span>
         </button>
         <ul className="ml-auto hidden items-center justify-between sm:flex">
           {isLoggedIn ? (
@@ -142,23 +151,29 @@ const Header: React.FC = () => {
           className={`fixed top-0 left-0 z-10 h-full w-full bg-white transition-transform duration-300 sm:hidden ${
             menuOpen ? "translate-x-0" : "-translate-x-full"
           }`}>
-          <div className="flex flex-col items-center gap-6 pt-24 text-lg font-bold">
-            <Link href="/" onClick={() => setMenuOpen(false)}>
+          <div className="flex flex-col items-start gap-6 pt-24 text-lg font-bold px-6">
+            <Link href="/" onClick={() => setMenuOpen(false)} className="mb-2">
               HOME
             </Link>
-            <DropdownMenu title="CATEGORY" items={categoryItems} />
-            <DropdownMenu title="TASTE" items={tasteItems} />
-            <DropdownMenu title="SHAPE" items={shapeItems} />
-            <DropdownMenu title="MEDIA" items={mediaItems} />
+            <DropdownMenu title="CATEGORY" items={categoryItems} isMobile />
+            <DropdownMenu title="TASTE" items={tasteItems} isMobile />
+            <DropdownMenu title="SHAPE" items={shapeItems} isMobile />
+            <DropdownMenu title="MEDIA" items={mediaItems} isMobile />
             {isLoggedIn ? (
               <>
-                <Link href="/post" onClick={() => setMenuOpen(false)}>
+                <Link
+                  href="/post"
+                  onClick={() => setMenuOpen(false)}
+                  className="mb-2">
                   POST
                 </Link>
-                <Link href="/mybanners" onClick={() => setMenuOpen(false)}>
+                <Link
+                  href="/mybanners"
+                  onClick={() => setMenuOpen(false)}
+                  className="mb-2">
                   MY_BANNERS
                 </Link>
-                <div className="flex">
+                <div className="flex justify-center w-full mt-4 gap-2">
                   <button
                     className="mx-4 mt-4 border px-6 py-2"
                     onClick={() => {
@@ -173,7 +188,7 @@ const Header: React.FC = () => {
                 </div>
               </>
             ) : (
-              <div className="flex">
+              <div className="flex justify-center w-full mt-4 gap-2">
                 <Link
                   href="/login"
                   className="mx-4 mt-4 border px-6 py-2"
