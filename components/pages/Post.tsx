@@ -87,18 +87,22 @@ export default function Post() {
   };
 
   return (
-    <div className="flex-grow flex items-center justify-center">
-      <BannerInfoForm
-        onSubmit={handleFormSubmit}
-        initialValues={{
-          company_name: "",
-          category: "",
-          taste: "",
-          shape: "",
-          media: "",
-        }}
-      />
-      <ImageUploader onImageSelect={handleImageSelect} />
+    <div className="flex flex-col sm:flex-row sm:justify-center sm:items-center">
+      <div className="w-full flex justify-center sm:order-2">
+        <ImageUploader onImageSelect={handleImageSelect} />
+      </div>
+      <div className="w-full flex justify-center sm:block">
+        <BannerInfoForm
+          onSubmit={handleFormSubmit}
+          initialValues={{
+            company_name: "",
+            category: "",
+            taste: "",
+            shape: "",
+            media: "",
+          }}
+        />
+      </div>
     </div>
   );
 }

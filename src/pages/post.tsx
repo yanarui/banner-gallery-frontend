@@ -6,7 +6,9 @@ export default function Home() {
   return (
     <div className="bg-white flex flex-col min-h-screen">
       <Header />
-      <Post />
+      <div className="flex-grow flex items-center justify-center">
+        <Post />
+      </div>
       <Footer />
     </div>
   );

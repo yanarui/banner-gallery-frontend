@@ -54,7 +54,7 @@ export default function BannerInfoForm({
   return (
     <form
       onSubmit={handleSubmit}
-      className="pr-15 pb-7 border-r-1 border-gray-800">
+      className="pr-6 sm:pr-15 sm:pb-7 sm:border-r-1 sm:border-gray-800">
       <table>
         <tbody>
           <TextInput
