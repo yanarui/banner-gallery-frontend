@@ -67,7 +67,7 @@ export default function Gallery({ banners = [] }: GalleryProps) {
         {Array.isArray(banners) &&
           banners.slice(0, visibleCount).map((banner, i) => (
             <div className="w-full mt-2 sm:w-95" key={i}>
-              <div className="bg-gray-200 overflow-hidden p-3 sm:p-10">
+              <div className="bg-gray-200 overflow-hidden p-2 sm:p-10">
                 <div className="flex justify-center items-center w-[160px] h-[160px] sm:w-[300px] sm:h-[300px] mx-auto my-auto relative group rounded">
                   <Link
                     href={

@@ -120,7 +120,7 @@ export default function MyBanners() {
             <div className="grid grid-cols-2 gap-[10px] sm:gap-[20px] breakpoint-1190 breakpoint-1590">
               {banners.map((banner) => (
                 <div className="w-full mt-2 sm:w-95" key={banner.id}>
-                  <div className="bg-gray-200 overflow-hidden p-3 sm:p-10">
+                  <div className="bg-gray-200 overflow-hidden p-2 sm:p-10">
                     <div className="flex justify-center items-center w-[160px] h-[160px] sm:w-[300px] sm:h-[300px] mx-auto my-auto relative group rounded">
                       <Link
                         href={
