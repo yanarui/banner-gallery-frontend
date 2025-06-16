@@ -44,7 +44,9 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
           <ul className="pl-6">
             {items.map((item) => (
               <li key={item.link} className="py-1">
-                <Link href={item.link}>{item.label}</Link>
+                <Link href={item.link} scroll={false}>
+                  {item.label}
+                </Link>
               </li>
             ))}
           </ul>
@@ -63,6 +65,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
           <li key={index} className="mb-1 last:mb-0">
             <Link
               href={item.link}
+              scroll={false}
               className="block px-1 py-2 text-gray-800 hover:bg-gray-100 hover:text-gray-600 text-base w-32 rounded">
               {item.label}
             </Link>

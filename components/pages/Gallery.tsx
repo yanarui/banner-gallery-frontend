@@ -72,7 +72,8 @@ export default function Gallery({ banners = [] }: GalleryProps) {
                   <Link
                     href={
                       banner.detail_url || `/bannerdetailpage?id=${banner.id}`
-                    }>
+                    }
+                    scroll={false}>
                     <AspectRatioImageCard
                       src={banner.image_url}
                       alt={banner.company_name || `Banner ${banner.id}`}
@@ -89,6 +90,7 @@ export default function Gallery({ banners = [] }: GalleryProps) {
                     href={`/${encodeURIComponent(
                       tag.tag_type
                     )}/${encodeURIComponent(tag.name)}`}
+                    scroll={false}
                     className="inline-block px-2 py-1 mr-2 mb-2 text-xs sm:text-base font-semibold text-gray-800 bg-gray-200 rounded hover:bg-gray-300 hover:text-gray-900 transition-colors duration-200">
                     {tag.name}
                   </Link>

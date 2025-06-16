@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import Header from "../../components/base/Header/Header";
-import Footer from "../../components/base/Footer/Footer";
 import UpdateBanner from "../../components/pages/UpdateBanner";
 
 type Banner = {
@@ -35,12 +33,8 @@ export default function UpdateBannerPage() {
     return <p>Loading...</p>;
   }
   return (
-    <div className="bg-white flex flex-col min-h-screen">
-      <Header />
-      <div className="flex-grow flex items-center justify-center">
-        <UpdateBanner banner={banner} />
-      </div>
-      <Footer />
+    <div className="flex-grow flex items-center justify-center">
+      <UpdateBanner banner={banner} />
     </div>
   );
 }

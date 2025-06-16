@@ -1,7 +1,5 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import Header from "../../../components/base/Header/Header";
-import Footer from "../../../components/base/Footer/Footer";
 import Gallery from "../../../components/pages/Gallery";
 
 type Tag = {
@@ -44,13 +42,11 @@ export default function TagPage() {
   }, [tag]);
 
   return (
-    <div className="bg-white flex flex-col min-h-screen">
-      <Header />
+    <>
       <h1 className="text-2xl font-bold my-6 text-center capitalize text-gray-800">
         {tag}
       </h1>
       <Gallery banners={banners} />
-      <Footer />
-    </div>
+    </>
   );
 }

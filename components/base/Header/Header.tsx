@@ -69,7 +69,9 @@ const Header: React.FC = () => {
     <header className="w-full bg-white text-gray-800">
       <div className="flex relative items-center justify-between border-b border-gray-800 px-4 py-4 sm:px-16 sm:py-8">
         <h1 className="text-2xl font-bold mx-auto sm:absolute sm:left-1/2 sm:-translate-x-1/2 sm:transform">
-          <Link href="/">Banner Gallery</Link>
+          <Link href="/" scroll={false}>
+            Banner Gallery
+          </Link>
         </h1>
         <button
           className="fixed top-3 right-4 z-50 sm:hidden bg-gray-100 rounded-sm p-3 shadow"
@@ -92,7 +94,9 @@ const Header: React.FC = () => {
           {isLoggedIn ? (
             <>
               <li className="mr-4 cursor-pointer border px-6 py-2">
-                <Link href="/mybanners">{username}</Link>
+                <Link href="/mybanners" scroll={false}>
+                  {username}
+                </Link>
               </li>
               <li
                 className="cursor-pointer border px-6 py-2"
@@ -103,10 +107,14 @@ const Header: React.FC = () => {
           ) : (
             <>
               <li className="mr-4 cursor-pointer border px-6 py-2">
-                <Link href="/login">LOGIN</Link>
+                <Link href="/login" scroll={false}>
+                  LOGIN
+                </Link>
               </li>
               <li className="cursor-pointer border px-6 py-2">
-                <Link href="/signup">SIGN UP</Link>
+                <Link href="/signup" scroll={false}>
+                  SIGN UP
+                </Link>
               </li>
             </>
           )}
@@ -118,6 +126,7 @@ const Header: React.FC = () => {
             <li>
               <Link
                 href="/"
+                scroll={false}
                 className="text-gray-800 transition-opacity duration-200 hover:text-gray-600 hover:opacity-70">
                 HOME
               </Link>
@@ -131,6 +140,7 @@ const Header: React.FC = () => {
                 <li>
                   <Link
                     href="/post"
+                    scroll={false}
                     className="text-gray-800 transition-opacity duration-200 hover:text-gray-600 hover:opacity-70">
                     POST
                   </Link>
@@ -138,6 +148,7 @@ const Header: React.FC = () => {
                 <li>
                   <Link
                     href="/mybanners"
+                    scroll={false}
                     className="text-gray-800 transition-opacity duration-200 hover:text-gray-600 hover:opacity-70">
                     MY_BANNERS
                   </Link>
@@ -152,7 +163,11 @@ const Header: React.FC = () => {
             menuOpen ? "translate-x-0" : "-translate-x-full"
           }`}>
           <div className="flex flex-col items-start gap-6 pt-24 text-lg font-bold px-6">
-            <Link href="/" onClick={() => setMenuOpen(false)} className="mb-2">
+            <Link
+              href="/"
+              scroll={false}
+              onClick={() => setMenuOpen(false)}
+              className="mb-2">
               HOME
             </Link>
             <DropdownMenu title="CATEGORY" items={categoryItems} isMobile />
@@ -163,12 +178,14 @@ const Header: React.FC = () => {
               <>
                 <Link
                   href="/post"
+                  scroll={false}
                   onClick={() => setMenuOpen(false)}
                   className="mb-2">
                   POST
                 </Link>
                 <Link
                   href="/mybanners"
+                  scroll={false}
                   onClick={() => setMenuOpen(false)}
                   className="mb-2">
                   MY_BANNERS
@@ -183,7 +200,9 @@ const Header: React.FC = () => {
                     LOGOUT
                   </button>
                   <p className="mx-4 mt-4 border px-6 py-2">
-                    <Link href="/mybanners">{username}</Link>
+                    <Link href="/mybanners" scroll={false}>
+                      {username}
+                    </Link>
                   </p>
                 </div>
               </>
@@ -191,12 +210,14 @@ const Header: React.FC = () => {
               <div className="flex justify-center w-full mt-4 gap-2">
                 <Link
                   href="/login"
+                  scroll={false}
                   className="mx-4 mt-4 border px-6 py-2"
                   onClick={() => setMenuOpen(false)}>
                   LOGIN
                 </Link>
                 <Link
                   href="/signup"
+                  scroll={false}
                   className="mx-4 mt-4 border px-6 py-2"
                   onClick={() => setMenuOpen(false)}>
                   SIGN UP

@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import Header from "../../components/base/Header/Header";
-import Footer from "../../components/base/Footer/Footer";
 import BannerDetail from "../../components/pages/BannerDetail";
 
 type Banner = {
@@ -36,12 +34,8 @@ export default function BannerDetailPage() {
   }
 
   return (
-    <div className="bg-white flex flex-col min-h-screen">
-      <Header />
-      <div className="flex-grow flex items-center justify-center">
-        <BannerDetail banner={banner} />
-      </div>
-      <Footer />
+    <div className="flex-grow flex items-center justify-center">
+      <BannerDetail banner={banner} />
     </div>
   );
 }
