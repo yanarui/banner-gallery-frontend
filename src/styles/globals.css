@@ -36,10 +36,19 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+  min-width: 100%;
+  padding: 0;
+  margin: 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overflow-y: scroll;
+}
+body::-webkit-scrollbar {
+  display: none;
 }
 
-html,
-body {
+html {
   width: 100%;
   min-width: 100%;
   padding: 0;
