@@ -1,4 +1,5 @@
 import Gallery from "../../../components/pages/Gallery";
+import { GetServerSidePropsContext } from "next";
 
 type Tag = {
   name: string;
@@ -29,8 +30,8 @@ export default function TagPage({ banners, tag }: TagPageProps) {
   );
 }
 
-export async function getServerSideProps(context: any) {
-  const { tag } = context.params;
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const { tag } = context.params?.tag as string | undefined;
   if (!tag) {
     return { props: { banners: [], tag: "" } };
   }
