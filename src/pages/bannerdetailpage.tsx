@@ -1,4 +1,4 @@
-import { GetServerSidePropsContext } from "next";
+import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import BannerDetail from "../../components/pages/BannerDetail";
 
 type Banner = {
@@ -30,7 +30,9 @@ export default function BannerDetailPage({ banner }: BannerDetailPageProps) {
   );
 }
 
-export async function getServerSideProps(context: GetServerSidePropsContext) {
+export const getServerSideProps: GetServerSideProps<
+  BannerDetailPageProps
+> = async (context: GetServerSidePropsContext) => {
   const { id } = context.query;
 
   if (!id) {
@@ -49,4 +51,4 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   } catch {
     return { props: { banner: null } };
   }
-}
+};

@@ -1,5 +1,5 @@
 import Gallery from "../../../components/pages/Gallery";
-import { GetServerSidePropsContext } from "next";
+import { GetServerSideProps, GetServerSidePropsContext } from "next";
 
 type Tag = {
   name: string;
@@ -30,8 +30,10 @@ export default function TagPage({ banners, tag }: TagPageProps) {
   );
 }
 
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const { tag } = context.params?.tag as string | undefined;
+export const getServerSideProps: GetServerSideProps<TagPageProps> = async (
+  context: GetServerSidePropsContext
+) => {
+  const tag = context.params?.tag as string | undefined;
   if (!tag) {
     return { props: { banners: [], tag: "" } };
   }
@@ -50,4 +52,4 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     console.error("Error fetching banners:", error);
     return { props: { banners: [], tag } };
   }
-}
+};
