@@ -49,7 +49,7 @@ export const getServerSideProps: GetServerSideProps<TagPageProps> = async (
     }
     const data: Banner[] = await res.json();
     return { props: { banners: data || [], tag } };
-  } catch (error) {
+  } catch {
     return { props: { banners: [], tag } };
   }
 };

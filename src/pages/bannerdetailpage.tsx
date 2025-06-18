@@ -46,7 +46,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     }
     const data = await res.json();
     return { props: { banner: data } };
-  } catch (error) {
+  } catch {
     return { props: { banner: null } };
   }
 }
