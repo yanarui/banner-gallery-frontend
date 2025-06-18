@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import BannerDetail from "../../components/pages/BannerDetail";
 
 type Banner = {
@@ -15,22 +13,13 @@ type Banner = {
   };
 };
 
-export default function BannerDetailPage() {
-  const router = useRouter();
-  const { id } = router.query;
-  const [banner, setBanner] = useState<Banner | null>(null);
+interface BannerDetailPageProps {
+  banner: Banner | null;
+}
 
-  useEffect(() => {
-    if (id) {
-      fetch(`https://banner-gallery-backend.onrender.com/api/banners/${id}`)
-        .then((res) => res.json())
-        .then((data) => setBanner(data))
-        .catch((error) => console.error("Error fetching banner:", error));
-    }
-  }, [id]);
-
+export default function BannerDetailPage({ banner }: BannerDetailPageProps) {
   if (!banner) {
-    return <p>Loading...</p>;
+    return <p>Not Found</p>;
   }
 
   return (
@@ -38,4 +27,25 @@ export default function BannerDetailPage() {
       <BannerDetail banner={banner} />
     </div>
   );
+}
+
+export async function getServerSideProps(context: any) {
+  const { id } = context.query;
+
+  if (!id) {
+    return { props: { banner: null } };
+  }
+
+  try {
+    const res = await fetch(
+      `https://banner-gallery-backend.onrender.com/api/banners/${id}`
+    );
+    if (!res.ok) {
+      return { props: { banner: null } };
+    }
+    const data = await res.json();
+    return { props: { banner: data } };
+  } catch (error) {
+    return { props: { banner: null } };
+  }
 }

@@ -1,5 +1,3 @@
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 import Gallery from "../../../components/pages/Gallery";
 
 type Tag = {
@@ -15,32 +13,12 @@ type Banner = {
   tags: Tag[];
 };
 
-export default function TagPage() {
-  const router = useRouter();
-  const { tag } = router.query;
-  const [banners, setBanners] = useState<Banner[]>([]);
+interface TagPageProps {
+  banners: Banner[];
+  tag: string;
+}
 
-  useEffect(() => {
-    if (!tag) return;
-    const fetchBanners = async () => {
-      try {
-        const encodedTag = encodeURIComponent(tag as string);
-        const res = await fetch(
-          `https://banner-gallery-backend.onrender.com/api/banners?tag=${encodedTag}`
-        );
-        if (!res.ok) {
-          throw new Error(`HTTP error! status: ${res.status}`);
-        }
-        const data = await res.json();
-        setBanners(data || []);
-      } catch (error) {
-        console.error("Error fetching banners:", error);
-        setBanners([]);
-      }
-    };
-    fetchBanners();
-  }, [tag]);
-
+export default function TagPage({ banners, tag }: TagPageProps) {
   return (
     <>
       <h1 className="text-2xl font-bold my-6 text-center capitalize text-gray-800">
@@ -49,4 +27,26 @@ export default function TagPage() {
       <Gallery banners={banners} />
     </>
   );
+}
+
+export async function getServerSideProps(context: any) {
+  const { tag } = context.params;
+  if (!tag) {
+    return { props: { banners: [], tag: "" } };
+  }
+
+  try {
+    const encodedTag = encodeURIComponent(tag);
+    const res = await fetch(
+      `https://banner-gallery-backend.onrender.com/api/banners?tag=${encodedTag}`
+    );
+    if (!res.ok) {
+      return { props: { banners: [], tag } };
+    }
+    const data = await res.json();
+    return { props: { banners: data || [], tag } };
+  } catch (error) {
+    console.error("Error fetching banners:", error);
+    return { props: { banners: [], tag } };
+  }
 }
