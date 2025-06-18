@@ -1,12 +1,18 @@
 import { GetServerSideProps } from "next";
 import Gallery from "../../components/pages/Gallery";
 
+type Tag = {
+  name: string;
+  tag_type: string;
+  id: number;
+};
+
 type Banner = {
   id: number;
   image_url: string;
   detail_url?: string;
   company_name?: string;
-  tags: any[];
+  tags: Tag[];
 };
 
 interface HomeProps {
