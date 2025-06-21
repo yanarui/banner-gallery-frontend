@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function SignupPage() {
   const [username, setUsername] = useState("");
@@ -37,49 +38,62 @@ export default function SignupPage() {
   };
 
   return (
-    <main className="flex-grow flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-10 rounded-lg shadow-md w-[400px]">
-        <h1 className="text-2xl font-bold text-center text-gray-700 mb-6">
-          SIGN UP
-        </h1>
-        <form onSubmit={handleSignup} className="space-y-4">
+    <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4 py-12">
+      <div className="w-full max-w-md rounded-lg bg-white p-8 shadow-md">
+        <h2 className="mb-8 text-center text-2xl font-bold text-gray-800">
+          新規登録
+        </h2>
+        <form className="space-y-6" onSubmit={handleSignup}>
           <div>
-            <label className="block text-gray-700 font-semibold mb-2">
+            <label
+              htmlFor="username"
+              className="block text-sm font-medium text-gray-700 mb-1">
               ユーザー名
             </label>
             <input
+              id="username"
+              name="username"
               type="text"
+              autoComplete="username"
+              required
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              required
-              className="w-full px-4 py-2 border border-gray-300 text-gray-500 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="block w-full rounded-md border border-gray-300 px-3 py-2 text-gray-900 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100 transition"
             />
           </div>
           <div>
-            <label className="block text-gray-700 font-semibold mb-2">
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700 mb-1">
               パスワード
             </label>
             <input
+              id="password"
+              name="password"
               type="password"
+              autoComplete="new-password"
+              required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              required
-              className="w-full px-4 py-2 border border-gray-300 text-gray-500 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="block w-full rounded-md border border-gray-300 px-3 py-2 text-gray-900 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100 transition"
             />
           </div>
-          <p className="text-gray-700 text-sm mb-4">
-            ・ユーザー名は半角英数字で入力してください
-            <br />
-            ・パスワードは6文字以上設定してください
-          </p>
-          {error && <p className="text-red-500 text-sm">{error}</p>}
+          {error && (
+            <div className="text-center text-sm text-red-500">{error}</div>
+          )}
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition-colors">
-            SIGN UP
+            className="w-full rounded-md bg-blue-600 py-2 px-4 text-white font-semibold hover:bg-blue-700 transition">
+            登録
           </button>
         </form>
+        <p className="mt-6 text-center text-sm text-gray-600">
+          すでにアカウントをお持ちですか？{" "}
+          <Link href="/login" className="text-blue-600 hover:underline">
+            ログイン
+          </Link>
+        </p>
       </div>
-    </main>
+    </div>
   );
 }
