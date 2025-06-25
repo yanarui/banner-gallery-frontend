@@ -10,17 +10,19 @@ const Header: React.FC = () => {
   const router = useRouter();
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    const storedUsername = localStorage.getItem("username");
-
-    if (token && storedUsername) {
-      setIsLoggedIn(true);
+    const updateAuth = () => {
+      const token = localStorage.getItem("token");
+      const storedUsername = localStorage.getItem("username");
+      setIsLoggedIn(!!token && !!storedUsername);
       setUsername(storedUsername);
-    } else {
-      setIsLoggedIn(false);
-      setUsername(null);
-    }
-  }, []);
+    };
+
+    updateAuth();
+    router.events.on("routeChangeComplete", updateAuth);
+    return () => {
+      router.events.off("routeChangeComplete", updateAuth);
+    };
+  }, [router.events]);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
