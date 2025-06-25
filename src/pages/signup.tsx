@@ -10,7 +10,7 @@ export default function SignupPage() {
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
-
+    setError("");
     try {
       const res = await fetch(
         "https://banner-gallery-backend.onrender.com/api/signup",
@@ -22,15 +22,17 @@ export default function SignupPage() {
           body: JSON.stringify({ username, password }),
         }
       );
-
-      const data = await res.json();
-
       if (!res.ok) {
+        const data = await res.json();
         setError(data.error || "サインアップに失敗しました");
         return;
       }
 
-      router.push("/login");
+      const data = await res.json();
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("username", username);
+
+      router.push("/");
     } catch (err) {
       console.error(err);
       setError("通信エラー");
