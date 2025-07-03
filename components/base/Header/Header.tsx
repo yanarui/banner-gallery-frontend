@@ -222,7 +222,7 @@ const Header: React.FC = () => {
                   scroll={false}
                   className="mx-4 mt-4 border px-6 py-2"
                   onClick={() => setMenuOpen(false)}>
-                  SIGN UP
+                  新規登録
                 </Link>
               </div>
             )}
