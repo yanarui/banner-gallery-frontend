@@ -20,11 +20,12 @@ const Header: React.FC = () => {
       if (token) {
         try {
           const res = await fetch(
-            "https://banner-gallery-backend.onrender.com/api/current_user-admin",
+            "https://banner-gallery-backend.onrender.com/api/current_user",
             {
               headers: { Authorization: `Bearer ${token}` },
             }
           );
+          console.log(res);
           if (res.ok) {
             const data = await res.json();
             setIsAdmin(!!data.is_admin);
