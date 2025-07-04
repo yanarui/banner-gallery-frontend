@@ -25,10 +25,11 @@ const Header: React.FC = () => {
               headers: { Authorization: `Bearer ${token}` },
             }
           );
-          console.log(res);
+
           if (res.ok) {
             const data = await res.json();
             setIsAdmin(!!data.is_admin);
+            console.log(isAdmin);
           } else {
             setIsAdmin(false);
           }
@@ -135,12 +136,7 @@ const Header: React.FC = () => {
             <>
               <li className="mr-4 cursor-pointer border px-6 py-2">
                 <Link href="/mybanners" scroll={false}>
-                  {username}
-                  {isAdmin && (
-                    <span className="ml-2 text-xs text-red-600 font-bold">
-                      管理者
-                    </span>
-                  )}
+                  {isAdmin ? "Administrator" : username}
                 </Link>
               </li>
               <li
@@ -246,7 +242,7 @@ const Header: React.FC = () => {
                   </button>
                   <p className="mx-4 mt-4 border px-6 py-2">
                     <Link href="/mybanners" scroll={false}>
-                      {username}
+                      {isAdmin ? "Administrator" : username}
                     </Link>
                   </p>
                 </div>
