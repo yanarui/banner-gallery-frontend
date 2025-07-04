@@ -28,8 +28,7 @@ const Header: React.FC = () => {
 
           if (res.ok) {
             const data = await res.json();
-            setIsAdmin(!!data.is_admin);
-            console.log(isAdmin);
+            setIsAdmin(!!data.admin);
           } else {
             setIsAdmin(false);
           }
