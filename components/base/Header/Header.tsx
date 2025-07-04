@@ -7,7 +7,44 @@ const Header: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState<string | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    const updateAuth = async () => {
+      const token = localStorage.getItem("token");
+      const storedUsername = localStorage.getItem("username");
+      setIsLoggedIn(!!token && !!storedUsername);
+      setUsername(storedUsername);
+
+      if (token) {
+        try {
+          const res = await fetch(
+            "https://banner-gallery-backend.onrender.com/api/current_user-admin",
+            {
+              headers: { Authorization: `Bearer ${token}` },
+            }
+          );
+          if (res.ok) {
+            const data = await res.json();
+            setIsAdmin(!!data.is_admin);
+          } else {
+            setIsAdmin(false);
+          }
+        } catch {
+          setIsAdmin(false);
+        }
+      } else {
+        setIsAdmin(false);
+      }
+    };
+
+    updateAuth();
+    router.events.on("routeChangeComplete", updateAuth);
+    return () => {
+      router.events.off("routeChangeComplete", updateAuth);
+    };
+  }, [router.events]);
 
   useEffect(() => {
     const updateAuth = () => {
@@ -98,6 +135,11 @@ const Header: React.FC = () => {
               <li className="mr-4 cursor-pointer border px-6 py-2">
                 <Link href="/mybanners" scroll={false}>
                   {username}
+                  {isAdmin && (
+                    <span className="ml-2 text-xs text-red-600 font-bold">
+                      管理者
+                    </span>
+                  )}
                 </Link>
               </li>
               <li
