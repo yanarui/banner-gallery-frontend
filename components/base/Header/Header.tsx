@@ -135,7 +135,7 @@ const Header: React.FC = () => {
             <>
               <li className="mr-4 cursor-pointer border px-6 py-2">
                 <Link href="/mybanners" scroll={false}>
-                  {isAdmin ? "Administrator" : username}
+                  {username}
                 </Link>
               </li>
               <li
@@ -241,7 +241,7 @@ const Header: React.FC = () => {
                   </button>
                   <p className="mx-4 mt-4 border px-6 py-2">
                     <Link href="/mybanners" scroll={false}>
-                      {isAdmin ? "Administrator" : username}
+                      {username}
                     </Link>
                   </p>
                 </div>
