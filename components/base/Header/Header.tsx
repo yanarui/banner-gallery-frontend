@@ -153,7 +153,7 @@ const Header: React.FC = () => {
               </li>
               <li className="cursor-pointer border px-6 py-2">
                 <Link href="/signup" scroll={false}>
-                  SIGN UP
+                  新規登録
                 </Link>
               </li>
             </>
